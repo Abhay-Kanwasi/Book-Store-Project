@@ -8,8 +8,11 @@ import router from './routes/bookRoutes.js';
 const PORT = process.env.PORT
 const DATABASE_URL = process.env.DATABASE_URL
 
-// configure app
+// Configure App
 const app = express();
+
+// Initializing Middleware for parsing request body
+app.use(express.json())
 
 // Load Routes
 app.use("", router)

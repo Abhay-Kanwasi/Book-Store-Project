@@ -1,3 +1,4 @@
+import { request, response } from "express";
 import { Book } from "../models/book_model.js";
 
 class BookController {
@@ -5,9 +6,10 @@ class BookController {
         return response.status(234).send('Welcome to book store project')
     };
 
-    static book_detail = async (request, response) => {
+    static create_book = async (request, response) => {
         try {
-            if ( !request.body.tile || request.body.author || request.body.publishYear ) {
+            console.log(request.body)
+            if ( !request.body.title || !request.body.author || !request.body.publishYear ) {
                 return response.status(400).send({ message: 'Send all required fields: title, author, publishYear' })
             }
 
@@ -18,11 +20,37 @@ class BookController {
             }
 
             const book = await Book.create(newBook);
-            return response.status(201).send(book)
+            return response.status(201).send(book);
         }
         catch (error) {
             console.log(error.message);
             response.status(500).send({ message: error.message });
+        }
+    }
+
+    static get_all_books = async (request, response) => {
+        try {
+            const books = await Book.find({});
+            return response.status(200).json({
+                number_of_books: books.length,
+                data: books
+            })
+        }
+        catch (error) {
+            console.log(error.message)
+            response.status(500).send({ message: error.message });
+        }
+    }
+
+    static get_book = async (request, response) => {
+        try {
+            const { id } = request.params;
+            const book = await Book.findById(id);
+            return response.status(200).json(book)
+        }
+        catch (error) {
+            console.log(error.message);
+            return response.status(500).send({ message: error.message });
         }
     }
 }
