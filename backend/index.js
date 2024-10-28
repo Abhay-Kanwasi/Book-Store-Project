@@ -12,10 +12,10 @@ const DATABASE_URL = process.env.DATABASE_URL
 const app = express();
 
 // Initializing Middleware for parsing request body
-app.use(express.json())
+app.use(express.json());
 
 // Load Routes
-app.use("", router)
+app.use("", router);
 
 // Database connectivity
 connectDB(DATABASE_URL)
