@@ -4,6 +4,7 @@ dotenv.config()
 import connectDB from './config/connectdb.js';
 import express from "express";
 import router from './routes/book_routes.js';
+import cors from 'cors';
 
 const PORT = process.env.PORT
 const DATABASE_URL = process.env.DATABASE_URL
@@ -13,6 +14,15 @@ const app = express();
 
 // Initializing Middleware for parsing request body
 app.use(express.json());
+
+// Middleware for handling CORS Policy
+app.use(
+    cors({
+        origin: 'http://localhost:3000',
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        allowedHeaders: ['Content-Type']
+    })
+)
 
 // Load Routes
 app.use("", router);
