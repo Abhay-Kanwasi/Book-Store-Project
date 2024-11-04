@@ -1,15 +1,10 @@
 import React from 'react'
 import { useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import AppRoutes from './AppRoutes'
 
 const App = () => {
   return (
-    <Routes>
-      <Route path='' element={} />
-      <Route path='' element={} />
-      <Route path='' element={} />
-      <Route path='' element={} />
-    </Routes>
+    <AppRoutes />
   )
 }
 
