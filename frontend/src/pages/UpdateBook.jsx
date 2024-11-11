@@ -11,7 +11,8 @@ const UpdateBook = () => {
   const [publishYear, setPublishYear] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const {id} = useParams();
+  const { id } = useParams();
+
   useEffect(() => {
     setLoading(true);
     axios.get(`http://localhost:8000/get_book/${id}`)
