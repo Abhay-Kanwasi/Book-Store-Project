@@ -19,6 +19,7 @@ const ShowBook = () => {
       setLoading(false);
     })
     .catch((error) => {
+      enqueueSnackbar('Error', {variant: 'error'})
       console.log(error);
     })
   }, [])
