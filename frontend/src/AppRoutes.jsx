@@ -10,11 +10,11 @@ import UpdateBook from './pages/UpdateBook';
 const AppRoutes = () => {
   return (
     <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/books/create' element={<CreateBooks />} />
-        <Route path='/books/details/:id' element={<ShowBook />} />
-        <Route path='/books/edit/:id' element={<UpdateBook />} />
-        <Route path='/books/delete/:id' element={<DeleteBook />} />
+      <Route path='/' element={<Home />} />
+      <Route path='/books/create' element={<CreateBooks />} />
+      <Route path='/books/details/:id' element={<ShowBook />} />
+      <Route path='/books/edit/:id' element={<UpdateBook />} />
+      <Route path='/books/delete/:id' element={<DeleteBook />} />
     </Routes>
   )
 }
